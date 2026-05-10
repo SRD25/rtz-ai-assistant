@@ -94,6 +94,9 @@ IMPORTANT RULES:
         const data = await response.json();
 
        const botReply = data?.choices?.[0]?.message?.content || "Sorry, I could not generate a response.";
+        console.log("USER:", userMessage);
+        console.log("BOT:", botReply);
+        console.log("-------------------------");
 
 res.json({
     reply: botReply

@@ -21,7 +21,7 @@ app.post("/chat", async (req, res) => {
                 "Authorization": `Bearer ${GROQ_API_KEY}`
             },
             body: JSON.stringify({
-                model: "llama3-70b-8192",
+                model: "llama-3.3-70b-versatile",
                 messages: [
                     {
                         role: "system",
@@ -52,9 +52,11 @@ Reply professionally and clearly.
 
         const data = await response.json();
 
-        res.json({
-            reply: data.choices[0].message.content
-        });
+       const botReply = data?.choices?.[0]?.message?.content || "Sorry, I could not generate a response.";
+
+res.json({
+    reply: botReply
+});
 
     } catch (error) {
 
